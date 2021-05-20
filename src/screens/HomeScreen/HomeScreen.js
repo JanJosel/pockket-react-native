@@ -3,8 +3,9 @@ import { FlatList, Keyboard, Text, TextInput, TouchableOpacity, View } from 'rea
 import styles from './styles';
 import { firebase } from '../../firebase/config'
 
-export default function HomeScreen(props) {
+let unsubRef; 
 
+export default function HomeScreen(props) {
     const [entityText, setEntityText] = useState('')
     const [entities, setEntities] = useState([])
 
@@ -12,7 +13,7 @@ export default function HomeScreen(props) {
     const userID = props.extraData.id
 
     useEffect(() => {
-        entityRef
+        unsubRef = entityRef
             .where("authorID", "==", userID)
             .orderBy('createdAt', 'desc')
             .onSnapshot(
@@ -51,6 +52,17 @@ export default function HomeScreen(props) {
         }
     }
 
+    const signOut = () => {
+        try {
+            // unsub from collection
+            unsubRef()
+            // sign out
+            firebase.auth().signOut();
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     const renderEntity = ({item, index}) => {
         return (
             <View style={styles.entityContainer}>
@@ -63,6 +75,9 @@ export default function HomeScreen(props) {
 
     return (
         <View style={styles.container}>
+            <TouchableOpacity style={styles.button} onPress={signOut}>
+                <Text style={styles.buttonText}>Logout</Text>
+            </TouchableOpacity>
             <View style={styles.formContainer}>
                 <TextInput
                     style={styles.input}

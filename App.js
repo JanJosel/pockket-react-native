@@ -18,6 +18,7 @@ export default function App() {
   useEffect(() => {
     const usersRef = firebase.firestore().collection('users');
     firebase.auth().onAuthStateChanged(user => {
+      // user logged in
       if (user) {
         usersRef
           .doc(user.uid)
@@ -31,6 +32,7 @@ export default function App() {
             setLoading(false)
           });
       } else {
+        setUser(null)
         setLoading(false)
       }
     });
