@@ -3,7 +3,9 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center'
+        padding:20,
+        backgroundColor:"white"
+        // alignItems: 'center'
     },
     formContainer: {
         flexDirection: 'row',
@@ -52,5 +54,34 @@ export default StyleSheet.create({
     entityText: {
         fontSize: 20,
         color: '#333333'
+    },
+    cardContainer: {
+        borderWidth: 1,
+        backgroundColor: 'white',
+        borderRadius: 10.0,
+        padding: 15,
+        marginBottom:20
+    },
+    cardTitle: {
+        marginBottom: 10,
+        color:'#f44336',
+        fontWeight:'bold'
+    },
+    cardValue: {
+        color:'#673ab7',
+        fontWeight:'bold',
+        fontSize:25
+    },
+    sectionTitle:{
+        marginBottom: 10,
+        color:'#673ab7',
+        fontWeight:'bold'
+    },
+    buttonLoginTouchable: {
+        alignItems: 'center',
+        marginBottom:20,
+    },
+    serviceButtonText: {
+        textAlign:"center"
     }
 })
