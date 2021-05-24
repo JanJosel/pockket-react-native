@@ -42,6 +42,7 @@ export default function CashInScreen(props) {
                     value={cashInAmount}
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
+                    keyboardType="number-pad"
                 />
                 <TouchableOpacity
                     style={styles.button}
