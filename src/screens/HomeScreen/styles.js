@@ -60,7 +60,10 @@ export default StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 10.0,
         padding: 15,
-        marginBottom:20
+        marginBottom:20,
+        flex: 1,
+        flexDirection: 'row',
+        maxHeight: 200
     },
     cardTitle: {
         marginBottom: 10,

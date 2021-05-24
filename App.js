@@ -3,7 +3,12 @@ import React, { useEffect, useState } from 'react'
 import { firebase } from './src/firebase/config'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { LoginScreen, HomeScreen, RegistrationScreen } from './src/screens'
+import { 
+  LoginScreen, 
+  HomeScreen, 
+  RegistrationScreen, 
+  CashInScreen 
+} from './src/screens'
 import {decode, encode} from 'base-64'
 if (!global.btoa) {  global.btoa = encode }
 if (!global.atob) { global.atob = decode }
@@ -50,9 +55,12 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         { user ? (
-          <Stack.Screen name="Dashboard">
-            {props => <HomeScreen {...props} extraData={user} />}
-          </Stack.Screen>
+          <>
+            <Stack.Screen name="Dashboard">
+              {props => <HomeScreen {...props} userData={user} />}
+            </Stack.Screen>
+            <Stack.Screen name="CashIn" component={CashInScreen} />
+          </>
         ) : (
           <>
             <Stack.Screen name="Login" component={LoginScreen} />
