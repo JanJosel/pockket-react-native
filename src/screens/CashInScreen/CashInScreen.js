@@ -10,6 +10,7 @@ export default function CashInScreen(props) {
     const navigation = props.navigation
     const userID = props.route.params.userID;
     const userDocRef = firebase.firestore().collection("users").doc(userID)
+    const transactions = firebase.firestore().collection("transactions")
 
     const cashIn = async () => {
         if(isNaN(cashInAmount)) {
@@ -22,7 +23,15 @@ export default function CashInScreen(props) {
         }
         else {
             await userDocRef.update({
-                balance: firebase.firestore.FieldValue.increment(Number(cashInAmount).toFixed(2))
+                balance: firebase.firestore.FieldValue.increment(Number(cashInAmount).toFixed(2)),
+                bits: firebase.firestore.FieldValue.increment(1.00)
+            });
+            await transactions.add({
+                sender: 'Pockket',
+                receiver: userID,
+                amount: Number(cashInAmount).toFixed(2),
+                bitsEarned: 1,
+                type: 'cashIn'
             });
             alert('Cash In was successful')
             navigation.navigate("Dashboard")

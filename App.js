@@ -7,7 +7,8 @@ import {
   LoginScreen, 
   HomeScreen, 
   RegistrationScreen, 
-  CashInScreen 
+  CashInScreen,
+  BuyLoadScreen 
 } from './src/screens'
 import {decode, encode} from 'base-64'
 if (!global.btoa) {  global.btoa = encode }
@@ -60,6 +61,7 @@ export default function App() {
               {props => <HomeScreen {...props} userData={user} />}
             </Stack.Screen>
             <Stack.Screen name="CashIn" component={CashInScreen} />
+            <Stack.Screen name="BuyLoad" component={BuyLoadScreen} />
           </>
         ) : (
           <>
