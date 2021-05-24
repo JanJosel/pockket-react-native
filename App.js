@@ -17,7 +17,7 @@ export default function App() {
 
   useEffect(() => {
     const usersRef = firebase.firestore().collection('users');
-    firebase.auth().onAuthStateChanged(user => {
+    const authListener = firebase.auth().onAuthStateChanged(user => {
       // user logged in
       if (user) {
         usersRef
@@ -36,6 +36,8 @@ export default function App() {
         setLoading(false)
       }
     });
+
+    return authListener;
   }, []);
 
   if (loading) {

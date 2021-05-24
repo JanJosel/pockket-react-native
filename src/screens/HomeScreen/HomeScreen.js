@@ -34,6 +34,8 @@ export default function HomeScreen(props) {
                     console.log(error)
                 }
             )
+        
+        return unsubRef();
     }, [])
 
     const onAddButtonPress = () => {

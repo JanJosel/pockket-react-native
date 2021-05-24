@@ -9,12 +9,18 @@ export default function RegistrationScreen({navigation}) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const [phoneNumber, setPhoneNumber] = useState('')
 
     const onFooterLinkPress = () => {
         navigation.navigate('Login')
     }
 
     const onRegisterPress = () => {
+        if (fullName.trim() === "" || email.trim() === "" || password.trim() === "" || confirmPassword.trim() === "" || phoneNumber.trim() === "") {
+            alert("Please fill out all fields")
+            return
+        }
+
         if (password !== confirmPassword) {
             alert("Passwords don't match.")
             return
@@ -29,13 +35,14 @@ export default function RegistrationScreen({navigation}) {
                     id: uid,
                     email,
                     fullName,
+                    phoneNumber
                 };
                 const usersRef = firebase.firestore().collection('users')
                 usersRef
                     .doc(uid)
                     .set(data)
                     .then(() => {
-                        navigation.navigate('Home', {user: data})
+                        navigation.navigate('Dashboard', {user: data})
                     })
                     .catch((error) => {
                         alert(error)
@@ -72,6 +79,19 @@ export default function RegistrationScreen({navigation}) {
                     value={email}
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
+                    autoCompleteType="email"
+                    keyboardType="email-address"
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder='Phone Number'
+                    placeholderTextColor="#aaaaaa"
+                    onChangeText={(text) => setPhoneNumber(text)}
+                    value={phoneNumber}
+                    underlineColorAndroid="transparent"
+                    autoCapitalize="none"
+                    autoCompleteType="tel"
+                    keyboardType="phone-pad"
                 />
                 <TextInput
                     style={styles.input}
