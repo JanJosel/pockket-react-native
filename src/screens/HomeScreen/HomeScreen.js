@@ -71,7 +71,7 @@ export default function HomeScreen(props) {
                             <Entypo name="text-document" size={38} color="#e91e63" />
                             <Text style={styles.serviceButtonText}>Pay{"\n"}Bills</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonLoginTouchable}>
+                        <TouchableOpacity onPress={() => navigation.navigate("Bank Transfer", {userID: userID})} style={styles.buttonLoginTouchable}>
                             <FontAwesome name="bank" size={40} color="#e91e63" style={{marginBottom:3}} />
                             <Text style={styles.serviceButtonText}>Bank{"\n"}Transfer</Text>
                         </TouchableOpacity>
