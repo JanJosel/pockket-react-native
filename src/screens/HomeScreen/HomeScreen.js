@@ -58,7 +58,7 @@ export default function HomeScreen(props) {
                 </View>
                 <View style={{width: "30%", alignItems: "center", justifyContent: "center"}}>
                     {/* cash in */}
-                    <TouchableOpacity onPress={() => navigation.navigate("CashIn", {userID: userID})}>
+                    <TouchableOpacity onPress={() => navigation.navigate("Cash In", {userID: userID})}>
                         <Entypo name="squared-plus" size={48} color="#f44336" />
                         <Text>Cash In</Text>
                     </TouchableOpacity>
@@ -76,7 +76,7 @@ export default function HomeScreen(props) {
                 <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
 
                     <View style={{flexDirection:'column'}}>
-                        <TouchableOpacity style={styles.buttonLoginTouchable}>
+                        <TouchableOpacity onPress={() => navigation.navigate("Pay Bills", {userID: userID})} style={styles.buttonLoginTouchable}>
                             <Entypo name="text-document" size={38} color="#e91e63" />
                             <Text style={styles.serviceButtonText}>Pay{"\n"}Bills</Text>
                         </TouchableOpacity>
@@ -98,7 +98,7 @@ export default function HomeScreen(props) {
                     </View>
 
                     <View style={{flexDirection:'column'}}>
-                        <TouchableOpacity onPress={() => navigation.navigate("BuyLoad", {userID: userID})} style={styles.buttonLoginTouchable}>
+                        <TouchableOpacity onPress={() => navigation.navigate("Buy Load", {userID: userID})} style={styles.buttonLoginTouchable}>
                             <MaterialCommunityIcons name="android-messages" size={40} color="#e91e63" />
                             <Text style={styles.serviceButtonText}>Buy{"\n"}Load</Text>
                         </TouchableOpacity>
