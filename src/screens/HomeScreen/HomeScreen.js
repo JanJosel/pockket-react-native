@@ -7,8 +7,6 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import styles from './styles';
 import { firebase } from '../../firebase/config';
 
-let unsubRef; 
-
 export default function HomeScreen(props) {
     const [userBalance, setUserBalance] = useState(0)
     const [userBits, setUserBits] = useState(0);
@@ -18,7 +16,7 @@ export default function HomeScreen(props) {
     const userDocRef = firebase.firestore().collection("users").doc(userID)
 
     useEffect(() => {
-        unsubRef = userDocRef.onSnapshot((doc) => {
+        let unsubRef = userDocRef.onSnapshot((doc) => {
                 setUserBalance(doc.data().balance);
                 setUserBits(doc.data().bits)
             });
@@ -104,7 +102,7 @@ export default function HomeScreen(props) {
                             <FontAwesome name="money" size={40} color="#e91e63" />
                             <Text style={styles.serviceButtonText}>Fund{"\n"}Transfer</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonLoginTouchable}>
+                        <TouchableOpacity onPress={() => navigation.navigate("Pockket Trace", {userID: userID})} style={styles.buttonLoginTouchable}>
                             <Entypo name="area-graph" size={40} color="#e91e63" />
                             <Text style={styles.serviceButtonText}>Pockket{"\n"}Trace</Text>
                         </TouchableOpacity>
