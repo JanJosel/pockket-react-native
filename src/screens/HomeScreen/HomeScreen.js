@@ -98,7 +98,7 @@ export default function HomeScreen(props) {
                     </View>
 
                     <View style={{flexDirection:'column'}}>
-                        <TouchableOpacity style={styles.buttonLoginTouchable}>
+                        <TouchableOpacity onPress={() => navigation.navigate("Fund Transfer", {userID: userID})} style={styles.buttonLoginTouchable}>
                             <FontAwesome name="money" size={40} color="#e91e63" />
                             <Text style={styles.serviceButtonText}>Fund{"\n"}Transfer</Text>
                         </TouchableOpacity>
