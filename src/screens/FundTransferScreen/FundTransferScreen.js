@@ -47,7 +47,7 @@ export default function FundTransferScreen(props) {
                     receiver: mobileNumber,
                     amount: Number(fundTransferAmount).toFixed(2),
                     bitsEarned: 1,
-                    type: 'Fund Transfer',
+                    type: qrReceiverNumber ? 'Pay QR' : 'Fund Transfer',
                     date: new Date().getTime()
                 });
                 await userDocRef.update({
