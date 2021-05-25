@@ -22,19 +22,24 @@ export default function CashInScreen(props) {
             return
         }
         else {
-            await userDocRef.update({
-                balance: firebase.firestore.FieldValue.increment(Number(cashInAmount).toFixed(2)),
-                bits: firebase.firestore.FieldValue.increment(1.00)
-            });
-            await transactions.add({
-                sender: 'Pockket',
-                receiver: userID,
-                amount: Number(cashInAmount).toFixed(2),
-                bitsEarned: 1,
-                type: 'cashIn'
-            });
-            alert('Cash In was successful')
-            navigation.navigate("Dashboard")
+            try {
+                await userDocRef.update({
+                    balance: firebase.firestore.FieldValue.increment(Number(cashInAmount).toFixed(2)),
+                    bits: firebase.firestore.FieldValue.increment(1.00)
+                });
+                await transactions.add({
+                    sender: 'Pockket',
+                    receiver: userID,
+                    amount: Number(cashInAmount).toFixed(2),
+                    bitsEarned: 1,
+                    type: 'Cash In',
+                    date: new Date().getTime()
+                });
+                alert('Cash In was successful')
+                navigation.navigate("Dashboard")
+            } catch (error) {
+                alert('Cash In failed')
+            }
         }
     }
 

@@ -30,19 +30,24 @@ export default function BuyLoadScreen(props) {
             return
         }
         else {
-            await transactions.add({
-                sender: userID,
-                receiver: mobileNumber,
-                amount: Number(buyLoadAmount).toFixed(2),
-                bitsEarned: 1,
-                type: 'buyLoad'
-            });
-            await userDocRef.update({
-                balance: firebase.firestore.FieldValue.increment(-Number(buyLoadAmount).toFixed(2)),
-                bits: firebase.firestore.FieldValue.increment(1.00)
-            });
-            alert('Buy Load was successful')
-            navigation.navigate("Dashboard")
+            try {
+                await transactions.add({
+                    sender: userID,
+                    receiver: mobileNumber,
+                    amount: Number(buyLoadAmount).toFixed(2),
+                    bitsEarned: 1,
+                    type: 'Buy Load',
+                    date: new Date().getTime()
+                });
+                await userDocRef.update({
+                    balance: firebase.firestore.FieldValue.increment(-Number(buyLoadAmount).toFixed(2)),
+                    bits: firebase.firestore.FieldValue.increment(1.00)
+                });
+                alert('Buy Load was successful')
+                navigation.navigate("Dashboard")
+            } catch (error) {
+                alert('Buy Load failed')
+            }
         }
     }
 

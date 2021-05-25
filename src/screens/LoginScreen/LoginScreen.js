@@ -56,6 +56,8 @@ export default function LoginScreen({navigation}) {
                     value={email}
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
+                    autoCompleteType="email"
+                    keyboardType="email-address"
                 />
                 <TextInput
                     style={styles.input}
