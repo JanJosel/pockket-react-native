@@ -5,11 +5,13 @@ import styles from './styles';
 import { firebase } from '../../firebase/config'
 
 export default function FundTransferScreen(props) {
-    const [mobileNumber, setMobileNumber] = useState('')
-    const [fundTransferAmount, setFundTransferAmount] = useState('')
-
     const navigation = props.navigation
     const userID = props.route.params.userID;
+    const qrReceiverNumber = props.route.params.qrReceiverNumber;
+
+    const [mobileNumber, setMobileNumber] = useState(qrReceiverNumber ? qrReceiverNumber : '')
+    const [fundTransferAmount, setFundTransferAmount] = useState('')
+
     const transactions = firebase.firestore().collection("transactions")
     const userDocRef = firebase.firestore().collection("users").doc(userID)
     const users = firebase.firestore().collection("users");
@@ -69,7 +71,6 @@ export default function FundTransferScreen(props) {
             <KeyboardAwareScrollView
                 style={{ flex: 1, width: '100%' }}
                 keyboardShouldPersistTaps="always">
-                <Text style={{textAlign:"center"}}>*number must be linked to an existing Pockket Account</Text>
                 <TextInput
                     style={styles.input}
                     placeholderTextColor="#aaaaaa"
@@ -80,6 +81,8 @@ export default function FundTransferScreen(props) {
                     autoCapitalize="none"
                     keyboardType="number-pad"
                 />
+                <Text style={{textAlign:"center"}}>*number must be linked to an existing Pockket Account</Text>
+                
                 <TextInput
                     style={styles.input}
                     placeholderTextColor="#aaaaaa"

@@ -10,4 +10,5 @@ export { default as PockketTraceScreen } from './PockketTraceScreen/PockketTrace
 export { default as PockketBitsScreen } from './PockketBitsScreen/PockketBitsScreen'
 export { default as FundTransferScreen } from './FundTransferScreen/FundTransferScreen'
 export { default as PayQRScreen } from './PayQRScreen/PayQRScreen'
+export { default as ScanQRScreen } from './ScanQRScreen/ScanQRScreen'
 export { default as MyPockketQRScreen } from './MyPockketQRScreen/MyPockketQRScreen'

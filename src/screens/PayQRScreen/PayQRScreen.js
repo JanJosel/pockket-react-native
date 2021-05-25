@@ -9,6 +9,7 @@ export default function PayQRScreen(props) {
 
     const navigation = props.navigation
     const userID = props.route.params.userID;
+    const userNumber = props.route.params.userNumber;
 
     return (
         <View style={styles.container}>
@@ -17,7 +18,7 @@ export default function PayQRScreen(props) {
                 keyboardShouldPersistTaps="always">
                 <TouchableOpacity
                     style={styles.button}
-                    // onPress={() => buyLoad()}
+                    onPress={() => navigation.navigate("Scan QR", {userID: userID})}
                 >
                     <MaterialCommunityIcons name="qrcode-scan" size={50} color="#e91e63" />
                     <Text style={styles.buttonTitle}>Scan QR</Text>
@@ -25,7 +26,7 @@ export default function PayQRScreen(props) {
 
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => navigation.navigate("My Pockket QR", {userID: userID})}
+                    onPress={() => navigation.navigate("My Pockket QR", {userID: userID, userNumber: userNumber})}
                 >
                     <MaterialCommunityIcons name="qrcode-edit" size={50} color="#e91e63" />
                     <Text style={styles.buttonTitle}>Receive Money via QR</Text>

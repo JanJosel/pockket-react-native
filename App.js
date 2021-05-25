@@ -16,6 +16,7 @@ import {
   PockketBitsScreen,
   FundTransferScreen,
   PayQRScreen,
+  ScanQRScreen,
   MyPockketQRScreen
 } from './src/screens'
 import {decode, encode} from 'base-64'
@@ -93,6 +94,7 @@ export default function App() {
             <Stack.Screen name="Pockket Bits" component={PockketBitsScreen} />
             <Stack.Screen name="Fund Transfer" component={FundTransferScreen} />
             <Stack.Screen name="Pay QR" component={PayQRScreen} />
+            <Stack.Screen name="Scan QR" component={ScanQRScreen} />
             <Stack.Screen name="My Pockket QR" component={MyPockketQRScreen} />
           </>
         ) : (
