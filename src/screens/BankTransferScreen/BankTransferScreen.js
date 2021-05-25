@@ -92,17 +92,7 @@ export default function BankTransferScreen(props) {
                     value={accountName}
                     underlineColorAndroid="transparent"
                     autoCapitalize="none"
-                    keyboardType="number-pad"
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholderTextColor="#aaaaaa"
-                    placeholder='Enter email for receipt (optional)'
-                    // onChangeText={(text) => setBuyLoadAmount(text)}
-                    // value={buyLoadAmount}
-                    underlineColorAndroid="transparent"
-                    autoCapitalize="none"
-                    keyboardType="number-pad"
+                    keyboardType="default"
                 />
                 <TouchableOpacity
                     style={styles.button}
