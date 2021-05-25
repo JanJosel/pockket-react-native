@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "React Native Firebase",
-    "slug": "react-native-firebase",
+    "name": "Pockket",
+    "slug": "pockket-mobile",
     "platforms": [
       "ios",
       "android",
@@ -24,7 +24,11 @@
     "ios": {
       "supportsTablet": true
     },
-    "description": "Built by the team behind https://www.instamobile.io https://www.iosapptemplates.com https://www.instaflutter.com and https://www.instakotlin.com",
-    "githubUrl": "https://github.com/instamobile/react-native-firebase"
+    "android": {
+      "package": "com.g1corp.pockket",
+      "versionCode": 1
+    },
+    "description": "Pockket, your mobile e-payment companion",
+    "githubUrl": "https://github.com/JanJosel/pockket-react-native"
   }
 }

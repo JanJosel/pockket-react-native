@@ -67,7 +67,7 @@ export default function PayBillsScreenBiller(props) {
             {billers[billerCategory] ? 
                     <Picker
                         selectedValue={selectedValue}
-                        style={{ height: 50, width: '80%' }}
+                        style={{ height: 50, width: '80%', borderColor: '#e91e63' }}
                         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
                     >
                         <Picker.Item label="" value="" />
