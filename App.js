@@ -13,6 +13,8 @@ import {
   PayBillsScreenBiller
 } from './src/screens'
 import {decode, encode} from 'base-64'
+import { Text, TouchableOpacity } from 'react-native'
+import { MaterialIcons } from '@expo/vector-icons'; 
 if (!global.btoa) {  global.btoa = encode }
 if (!global.atob) { global.atob = decode }
 
@@ -59,7 +61,21 @@ export default function App() {
       <Stack.Navigator>
         { user ? (
           <>
-            <Stack.Screen name="Dashboard">
+            <Stack.Screen 
+              name="Dashboard" 
+              options={{
+                headerRight: () => (
+                  <TouchableOpacity
+                    onPress={() => firebase.auth().signOut()}
+                    title="Info"
+                    color="#fff"
+                    style={{marginRight: 20}}
+                  >
+                    <MaterialIcons name="logout" size={24} color="black" />
+                  </TouchableOpacity>
+                ),
+              }}
+            >
               {props => <HomeScreen {...props} userData={user} />}
             </Stack.Screen>
             <Stack.Screen name="Cash In" component={CashInScreen} />

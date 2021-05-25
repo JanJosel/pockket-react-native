@@ -44,6 +44,8 @@ export default function PayBillsScreenBiller(props) {
                     sender: userID,
                     receiver: selectedValue,
                     amount: Number(payBillAmount).toFixed(2),
+                    accountNumber: accountNumber,
+                    accountName: accountName,
                     bitsEarned: 1,
                     type: 'Pay Bill',
                     date: new Date().getTime()

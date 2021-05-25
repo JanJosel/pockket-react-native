@@ -22,18 +22,9 @@ export default function HomeScreen(props) {
                 setUserBalance(doc.data().balance);
                 setUserBits(doc.data().bits)
             });
+        
+        return () => unsubRef();
     }, [])
-
-    const signOut = () => {
-        try {
-            // unsub from collection
-            unsubRef()
-            // sign out
-            firebase.auth().signOut();
-        } catch (e) {
-            console.log(e);
-        }
-    }
 
 
     return (
@@ -121,10 +112,6 @@ export default function HomeScreen(props) {
                     
                 </View>
             </View>
-            <TouchableOpacity style={styles.button} onPress={signOut}>
-                <Text style={styles.buttonText}>Logout</Text>
-            </TouchableOpacity>
-            
         </View>
     )
 }
