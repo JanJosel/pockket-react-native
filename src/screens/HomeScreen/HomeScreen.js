@@ -80,7 +80,7 @@ export default function HomeScreen(props) {
                             <FontAwesome name="qrcode" size={40} color='#e91e63' />
                             <Text style={styles.serviceButtonText}>Pay{"\n"}QR</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonLoginTouchable}>
+                        <TouchableOpacity onPress={() => alert("Coming soon...")} style={styles.buttonLoginTouchable}>
                             <FontAwesome name="cc-paypal" size={44} color="#e91e63" />
                             <Text style={styles.serviceButtonText}>Link{"\n"}Paypal</Text>
                         </TouchableOpacity>
