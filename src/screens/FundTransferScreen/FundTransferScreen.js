@@ -44,7 +44,7 @@ export default function FundTransferScreen(props) {
                     receiver: mobileNumber,
                     amount: Number(fundTransferAmount).toFixed(2),
                     bitsEarned: 1,
-                    type: 'Buy Load',
+                    type: 'Fund Transfer',
                     date: new Date().getTime()
                 });
                 await userDocRef.update({
