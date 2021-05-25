@@ -1,6 +1,6 @@
 # Pockket
 
-Pockket is an E-Payment Mobile App Prototype built using the React Native Firebase Starter listed belows. This was created as part of the project requirements for IT 227.
+Pockket is an E-Payment Mobile App Prototype built using the React Native Firebase Starter listed below. This was created as part of the project requirements for IT 227.
 
 # React Native Firebase
 
