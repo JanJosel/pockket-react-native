@@ -8,3 +8,4 @@ export { default as PayBillsScreenBiller } from './PayBillsScreenBiller/PayBills
 export { default as BankTransferScreen } from './BankTransferScreen/BankTransferScreen'
 export { default as PockketTraceScreen } from './PockketTraceScreen/PockketTraceScreen'
 export { default as PockketBitsScreen } from './PockketBitsScreen/PockketBitsScreen'
+export { default as FundTransferScreen } from './FundTransferScreen/FundTransferScreen'
