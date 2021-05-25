@@ -54,11 +54,7 @@ export default function HomeScreen(props) {
                     </TouchableOpacity>
                 </View>
             </View>
-            <View>
-                <Text style={styles.sectionTitle}>
-                    Send Money
-                </Text>
-            </View>
+            
             <View>
                 <Text style={styles.sectionTitle}>
                     Services
