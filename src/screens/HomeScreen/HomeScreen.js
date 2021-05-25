@@ -76,7 +76,7 @@ export default function HomeScreen(props) {
                     </View>
 
                     <View style={{flexDirection:'column'}}>
-                        <TouchableOpacity style={styles.buttonLoginTouchable}>
+                        <TouchableOpacity onPress={() => navigation.navigate("Pay QR", {userID: userID})} style={styles.buttonLoginTouchable}>
                             <FontAwesome name="qrcode" size={40} color='#e91e63' />
                             <Text style={styles.serviceButtonText}>Pay{"\n"}QR</Text>
                         </TouchableOpacity>

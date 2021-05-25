@@ -15,17 +15,10 @@ export default function FundTransferScreen(props) {
     const users = firebase.firestore().collection("users");
 
     const fundTransfer = async () => {
-        const snapshot = await users.where('phoneNumber', '==', mobileNumber).get();
-        if (snapshot.empty) {
-            alert('Number did not match any user record');
-            return;
-        }  
-        const receiverID = snapshot.docs[0].id
-        const user = firebase.firestore().collection("users").doc(receiverID);
 
         const fields = await userDocRef.get();
 
-        if(isNaN(fundTransferAmount) || isNaN(mobileNumber) || mobileNumber=='') {
+        if(isNaN(fundTransferAmount) || isNaN(mobileNumber) || mobileNumber.trim() === '' || fundTransferAmount.trim() === '') {
             alert("Please enter a valid input")
             return
         }
@@ -39,6 +32,14 @@ export default function FundTransferScreen(props) {
         }
         else {
             try {
+                const snapshot = await users.where('phoneNumber', '==', mobileNumber).get();
+                if (snapshot.empty) {
+                    alert('Number did not match any user record');
+                    return;
+                }  
+                const receiverID = snapshot.docs[0].id
+                const user = firebase.firestore().collection("users").doc(receiverID);
+
                 await transactions.add({
                     sender: userID,
                     receiver: mobileNumber,

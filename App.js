@@ -14,7 +14,9 @@ import {
   BankTransferScreen,
   PockketTraceScreen,
   PockketBitsScreen,
-  FundTransferScreen
+  FundTransferScreen,
+  PayQRScreen,
+  MyPockketQRScreen
 } from './src/screens'
 import {decode, encode} from 'base-64'
 import { Text, TouchableOpacity } from 'react-native'
@@ -90,6 +92,8 @@ export default function App() {
             <Stack.Screen name="Pockket Trace" component={PockketTraceScreen} />
             <Stack.Screen name="Pockket Bits" component={PockketBitsScreen} />
             <Stack.Screen name="Fund Transfer" component={FundTransferScreen} />
+            <Stack.Screen name="Pay QR" component={PayQRScreen} />
+            <Stack.Screen name="My Pockket QR" component={MyPockketQRScreen} />
           </>
         ) : (
           <>
