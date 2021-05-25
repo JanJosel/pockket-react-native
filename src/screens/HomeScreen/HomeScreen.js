@@ -91,7 +91,7 @@ export default function HomeScreen(props) {
                             <MaterialCommunityIcons name="android-messages" size={40} color="#e91e63" />
                             <Text style={styles.serviceButtonText}>Buy{"\n"}Load</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonLoginTouchable}>
+                        <TouchableOpacity onPress={() => navigation.navigate("Pockket Bits", {userID: userID, userBits: userBits})} style={styles.buttonLoginTouchable}>
                             <FontAwesome5 name="coins" size={40} color="#e91e63" />
                             <Text style={styles.serviceButtonText}>Pockket{"\n"}Bits</Text>
                         </TouchableOpacity>

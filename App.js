@@ -12,7 +12,8 @@ import {
   PayBillsScreen,
   PayBillsScreenBiller,
   BankTransferScreen,
-  PockketTraceScreen
+  PockketTraceScreen,
+  PockketBitsScreen
 } from './src/screens'
 import {decode, encode} from 'base-64'
 import { Text, TouchableOpacity } from 'react-native'
@@ -86,6 +87,7 @@ export default function App() {
             <Stack.Screen name="Buy Load" component={BuyLoadScreen} />
             <Stack.Screen name="Bank Transfer" component={BankTransferScreen} />
             <Stack.Screen name="Pockket Trace" component={PockketTraceScreen} />
+            <Stack.Screen name="Pockket Bits" component={PockketBitsScreen} />
           </>
         ) : (
           <>
