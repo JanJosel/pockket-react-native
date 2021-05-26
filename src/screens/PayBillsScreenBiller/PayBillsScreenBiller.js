@@ -65,16 +65,18 @@ export default function PayBillsScreenBiller(props) {
     return (
         <View style={styles.container}>
             {billers[billerCategory] ? 
+                <View style={{width: '80%', borderColor: 'black', borderWidth: 1}}>
                     <Picker
                         selectedValue={selectedValue}
-                        style={{ height: 50, width: '80%', borderColor: '#e91e63' }}
+                        style={{ height: 50}}
                         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
                     >
                         <Picker.Item label="" value="" />
                         {billers[billerCategory].map(biller => <Picker.Item label={biller} value={biller} />)}
                     </Picker>
-                    :
-                    <Text>No billers available under selected category.</Text>
+                </View>
+                :
+                <Text>No billers available under selected category.</Text>
             }
 
             {selectedValue != '' &&
