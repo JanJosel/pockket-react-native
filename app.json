@@ -26,7 +26,7 @@
     },
     "android": {
       "package": "com.g1corp.pockket",
-      "versionCode": 5
+      "versionCode": 7
     },
     "description": "Pockket, your mobile e-payment companion",
     "githubUrl": "https://github.com/JanJosel/pockket-react-native"
