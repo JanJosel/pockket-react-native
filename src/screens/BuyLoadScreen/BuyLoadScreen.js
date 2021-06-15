@@ -26,7 +26,7 @@ export default function BuyLoadScreen(props) {
             return
         }
         else if(Number(fields.data().balance)-Number(buyLoadAmount) < 0) {
-            alert('Failed transaction - Not enought balance')
+            alert('Failed transaction - Not enough balance')
             return
         }
         else {

@@ -32,7 +32,7 @@ export default function BankTransferScreen(props) {
             return
         }
         else if(Number(fields.data().balance)-Number(bankTransferAmount) < 0) {
-            alert('Failed transaction - Not enought balance')
+            alert('Failed transaction - Not enough balance')
             return
         }
         else {

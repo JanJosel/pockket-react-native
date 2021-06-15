@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View, FlatList } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';  
 import { Entypo } from '@expo/vector-icons'; 
@@ -10,11 +10,13 @@ import { firebase } from '../../firebase/config';
 export default function HomeScreen(props) {
     const [userBalance, setUserBalance] = useState(0)
     const [userBits, setUserBits] = useState(0);
+    const [transactionData, setTransactionData] = useState([]);
 
     const navigation = props.navigation
     const userID = props.userData.id
     const userNumber = props.userData.phoneNumber
     const userDocRef = firebase.firestore().collection("users").doc(userID)
+    const transactions = firebase.firestore().collection("transactions")
 
     useEffect(() => {
         let unsubRef = userDocRef.onSnapshot((doc) => {
@@ -25,6 +27,53 @@ export default function HomeScreen(props) {
         return () => unsubRef();
     }, [])
 
+    useEffect(() => {
+        // get all transactions sorted by date
+        let unsubRef = transactions.orderBy("date", "desc")
+            .onSnapshot((querySnapshot) => {
+                let userTransactions = [];
+                
+                querySnapshot.forEach((doc) => {
+                    const transaction = doc.data();
+
+                    // user is sender => expense
+                    if(transaction.sender === userID)
+                        userTransactions.push({...doc.data(), id: doc.id, expense: true});
+                    // user is receiver => income
+                    if(transaction.receiver === userID)
+                        userTransactions.push({...doc.data(), id: doc.id, expense: false});
+                    if(transaction.receiver === userNumber)
+                        userTransactions.push({...doc.data(), id: doc.id, expense: false});
+                });
+
+                setTransactionData(userTransactions);
+            });
+        
+        return () => unsubRef();
+    }, [])
+
+    const renderItem = ({ item }) => (
+        <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', marginBottom: 20}}>
+            <View style={{width: '60%'}}>
+                <Text style={{fontWeight: 'bold'}}>{item.type}</Text>
+                <Text>
+                    {item.expense ? item.receiver : item.sender}
+                </Text>
+                <Text>{new Date(item.date).toLocaleString()}</Text>
+            </View>
+            <View style={{width: '40%'}}>
+                <Text 
+                    style={{
+                        fontWeight: 'bold', 
+                        fontSize: 18,
+                        color: item.expense ? '#e91e63' : 'green'
+                    }}
+                >
+                    PHP {item.amount}
+                </Text>
+            </View>
+        </View>
+    );
 
     return (
         <View style={styles.container}>
@@ -106,6 +155,18 @@ export default function HomeScreen(props) {
                     </View>
                     
                 </View>
+            </View>
+
+            <View>
+                <Text style={styles.sectionTitle}>
+                    Transaction History
+                </Text>
+                <FlatList
+                    style={{width: '100%', maxHeight: 200}}
+                    data={transactionData}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                />
             </View>
         </View>
     )

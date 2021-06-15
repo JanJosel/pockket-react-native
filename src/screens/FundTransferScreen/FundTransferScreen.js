@@ -29,7 +29,7 @@ export default function FundTransferScreen(props) {
             return
         }
         else if(Number(fields.data().balance)-Number(fundTransferAmount) < 0) {
-            alert('Failed transaction - Not enought balance')
+            alert('Failed transaction - Not enough balance')
             return
         }
         else {

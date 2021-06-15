@@ -89,7 +89,7 @@ export default function PockketTraceScreen(props) {
                 <Text>{new Date(item.date).toLocaleString()}</Text>
             </View>
             <View style={{width: '40%'}}>
-                <Text style={{fontWeight: 'bold', fontSize: 18, color: 'red'}}>PHP {item.amount}</Text>
+                <Text style={{fontWeight: 'bold', fontSize: 18, color: '#e91e63'}}>PHP {item.amount}</Text>
             </View>
         </View>
     );
@@ -122,7 +122,7 @@ export default function PockketTraceScreen(props) {
                 absolute
             />
 
-            <Text>Transaction History</Text>
+            <Text>Expense History</Text>
             <FlatList
                 style={{width: '100%', maxHeight: 300}}
                 data={expenseData}

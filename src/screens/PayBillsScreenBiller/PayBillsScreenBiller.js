@@ -35,7 +35,7 @@ export default function PayBillsScreenBiller(props) {
             return
         }
         else if(Number(user.data().balance)-Number(payBillAmount) < 0) {
-            alert('Failed transaction - Not enought balance')
+            alert('Failed transaction - Not enough balance')
             return
         }
         else {
